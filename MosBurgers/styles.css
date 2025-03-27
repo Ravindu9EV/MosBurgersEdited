@@ -236,7 +236,7 @@ section{
     margin-left: 10rem;
 }
 .addForm{
-    /* display: inline-block; */
+    display: none;
     position: fixed;
     display: flex;
     flex-direction: column;

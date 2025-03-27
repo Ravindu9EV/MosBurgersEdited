@@ -331,10 +331,10 @@ function fetchItems() {
   let select = document.getElementById("dropDownMenu").value;
 
   for (let item in items) {
-    console.log(item, "lp");
+    //console.log(item, "lp");
     const cardRow = document.querySelector(".cardRow");
     if (select === item) {
-      for (let obj in item) {
+      for (let obj in items[item]) {
         const card = document.createElement("div");
         card.setAttribute("class", "card");
         const row = document.createElement("div");
@@ -344,7 +344,7 @@ function fetchItems() {
         img.setAttribute("id", "cardImg");
         img.setAttribute("src", `${items[item][obj].image}`);
         img.setAttribute("alt", `${items[item][obj].itemName}.png`);
-        //console.log(items[item][obj], "po");
+        console.log(items[item][obj], "po");
         row.appendChild(img);
         const desc = document.createElement("div");
 
@@ -356,9 +356,9 @@ function fetchItems() {
         const midR = document.createElement("div");
         midR.setAttribute("class", "midR");
         midR.innerHTML = `
-             
+
               <p>Exp Date:${items[item][obj].expDate}</p>
-            
+
         `;
         card.appendChild(midR);
         const bRow = document.createElement("div");
@@ -383,8 +383,7 @@ function fetchItems() {
 }
 fetchItems();
 
-// load menu
-const fetchTable = () => {
+function fetchTableI() {
   const tableBody = document.querySelector(".itemsTable tbody");
   tableBody.innerHTML = "";
 
@@ -393,27 +392,25 @@ const fetchTable = () => {
       const row = document.createElement("tr");
 
       row.innerHTML = `
-        <td class="itmCode">${items[item][obj].itemCode}</td>
-        <td class="itmName">${items[item][obj].itemName}</td>
-        <td class="prc">${items[item][obj].price}</td>
-        <td class="expD">${items[item][obj].expDate}</td>
-        <td class="disc">${items[item][obj].discount}</td>
-        <td class="descrp">${items[item][obj].description}</td>
-        <td class="action">
-            <button id="btnEdit" onclick="editItem('${item}',${obj})">Edit</button>
-            <button id="btnDelete" onclick="deleteItem('${item}',${obj},'${items[item][obj].itemCode}')">Delete</button>
-            </td>
-    `;
+          <td class="itmCode">${items[item][obj].itemCode}</td>
+          <td class="itmName">${items[item][obj].itemName}</td>
+          <td class="prc">${items[item][obj].price}</td>
+          <td class="expD">${items[item][obj].expDate}</td>
+          <td class="disc">${items[item][obj].discount}</td>
+          <td class="descrp">${items[item][obj].description}</td>
+          <td class="action">
+              <button id="btnEdit" onclick="editItem('${item}',${obj})">Edit</button>
+              <button id="btnDelete" onclick="deleteItem('${item}',${obj},'${items[item][obj].itemCode}')">Delete</button>
+              </td>
+      `;
       tableBody.appendChild(row);
-      console.log(item, "ko");
-
-      //    <button id="btnEdit" onclick="editItem(${items[item][obj]})">Edit</button>
-      //<button id="btnDelete" onclick="deleteItem(${items[item]},${items[item][obj]})">Delete</button>
+      console.log(item, obj, "ko");
     }
   }
-};
+}
 
-fetchTable();
+fetchTableI();
+
 function displayAddForm() {
   document.getElementById("addFormItem").style.display = "block";
 }
