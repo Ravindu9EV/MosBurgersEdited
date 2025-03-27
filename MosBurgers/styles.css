@@ -1,0 +1,282 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+   
+}
+body{
+    background-color: rgb(4, 4, 59);
+}
+.mainCont{
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(4, 4, 59);
+    width: 100vw;
+    height: 100vh;
+    margin-top: 4rem;
+}
+.mainCont h1{
+    margin-top: 1rem;
+    color: bisque;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    width: 40rem;
+    height: 25rem;
+    background-color: rgba(255, 212, 160, 0.736);
+    backdrop-filter: blur(10);
+
+}
+.loginForm .row{
+    margin: 1rem 2rem;
+}
+.loginForm label{
+    width: 20rem;
+}
+
+.loginForm button{
+    width: 4rem;
+    height: 1.8rem;
+    margin-top: 2.5rem;
+    background-color: blue;
+    color: bisque;
+    border: none;
+    border-radius: 5px;
+}
+
+.loginForm button:hover{
+    background-color: bisque;
+    color: blue; 
+    border: 1px solid rgb(59, 59, 188);
+}
+
+
+/* nav bar */
+.navBar {
+    
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 4rem;
+    background-color: antiquewhite;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-top: -4rem;
+   
+}
+.navBar ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navBar ul li {
+    margin: 1rem 3rem;
+}
+
+
+.navBar ul li:hover{
+    padding: 1.3px;
+    border-radius: 10px;
+    background-color: red;
+    box-shadow: 1px 2px 3px 4px red;
+}
+
+.searchBar{
+    margin-top: 2rem;
+}
+
+.searchBar input{
+    width: 12rem;
+    height: 1.4rem;
+}
+
+.searchBar button{
+    width: 4rem;
+    height: 1.4rem;
+    border: none;
+    border-radius: 5px;
+}
+.midCont{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    margin-left: -14rem;
+}
+
+.items{
+    
+   
+    width: 60rem;
+    background-color: beige;
+    height: 30rem;
+    overflow: scroll;
+}
+
+/* item Card */
+.items .card{
+    margin: 4rem 2rem;
+    width: 10rem;
+    height: 10rem;
+    background-color: aqua;
+    padding: 10px;
+    border: 2px solid #9a5f5f;
+}
+.items .card h4{
+    margin-left: 4rem;
+}
+
+.items .card .row{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-bottom: 2rem;
+}
+.items .cardRow{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.items .card .row p{
+    margin-left: 10px;
+    overflow-wrap: anywhere;
+    color: rgb(186, 161, 131);
+    overflow-y: scroll;
+}
+.items .card .row img{
+    width: 30px;
+    height: 40px;
+}
+.items .card .midR{
+    font-size: .6em;
+}
+.items .card .bRow{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 1rem;
+}
+
+.items .card .bRow button{
+    width: 4rem;
+    height: 1.6rem;
+    font-size: .5em;
+}
+
+.items .card .bRow span{
+    font-size: .7em;
+    color: rgb(85, 79, 79);
+}
+/* cart */
+
+.midCont .cart{
+    width:15rem;
+    height: 30rem;
+    background-color: antiquewhite;
+}
+/* menu */
+section{
+    background-color: navy;
+    width: 100vw;
+    height: 91.2vh;
+}
+.table{
+    margin-top: 2rem;
+    overflow: scroll;
+    background-color: antiquewhite;
+    height: 38rem;
+}
+#foodMenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemsTable{
+    
+    overflow: scroll;
+    background-color: rgb(208, 208, 120);
+}
+
+.itemsTable th{
+    background-color: rgb(159, 159, 31);
+    color: black;
+}
+
+.itemsTable .action{
+    width: 6rem;
+}
+.itemsTable tr td{
+    padding: 12px 6px;
+    align-items: center;
+    justify-content: center;
+}
+.itemsTable .itmName{
+    width: 12rem;
+    
+}
+#btnAddItem{
+    width: 5rem;
+    height: 2rem;
+    margin-top: 1rem;
+    margin-left: 40rem;
+}
+
+/* add Item form */
+
+.addFormDropDown{
+    margin-top: 5rem;
+    margin-left: 10rem;
+}
+.addForm{
+    /* display: inline-block; */
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 34rem;
+    height: 35rem;
+    top: 1rem;
+    /* right: 10px; */
+
+    border: 3px solid #f1f1f1;
+    background-color: aquamarine;
+}
+.addForm h2{
+    margin-left: 10rem;
+    margin-top: -2rem;
+}
+.add-item-form{
+   
+    position: relative;
+    /* padding: 10px 4px; */
+   width: 29rem;
+   
+}
+
+.add-item-form .row{
+    /* margin-top: -3rem; */
+    padding: 2px;
+}
+
+
+
+
+.add-item-form .row {
+   margin: 20px;
+    
+  
+}
+
+#foodMenu .add-item-form button{
+    background-color: blue;
+    width: 15rem;
+}

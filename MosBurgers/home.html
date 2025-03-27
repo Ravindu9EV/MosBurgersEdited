@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="navBar">
+      <ul>
+        <li>Home</li>
+        <li>Menu</li>
+        <li>Previous Orders</li>
+        <li>Customers</li>
+        <li>Sales</li>
+      </ul>
+    </div>
+    <div class="mainCont">
+      <h1>Mos Burger</h1>
+
+      <div class="searchBar">
+        <input type="text" id="itemConde" />
+        <button>Search</button>
+      </div>
+      <div class="midCont">
+        <div class="dropDown">
+          <select id="dropDownMenu" onclick="fetchItems">
+            <option value="Burgers">Burgers</option>
+            <option value="Submarines">Submarines</option>
+            <option value="Fries">Fries</option>
+            <option value="Pasta">pasta</option>
+            <option value="Chicken">Chicken</option>
+            <option value="Beverages">Beverages</option>
+          </select>
+        </div>
+        <div class="items">
+          <div class="cardRow"></div>
+          <!-- <div class="card">
+            <h4>Item</h4>
+            <div class="row">
+              <img src="" id="cardImg" alt="a.png" />
+              <p>ajsaj slsn nksjd ajsdasakjsl</p>
+            </div>
+            <div class="midR">
+              <p>Exp Date:--/--/-----</p>
+            </div>
+            <div class="bRow">
+              <button>Add To Cart</button>
+              <div>
+                <p id="cardPrc">Rs.1300</p>
+                <span id="cardDisc">Discount: 10%</span>
+              </div>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="cart"></div>
+      </div>
+    </div>
+
+    <section id="foodMenu">
+      <button type="button" id="btnAddItem" onclick="displayAddForm()">
+        Add item
+      </button>
+      <div class="table">
+        <table border="1" class="itemsTable">
+          <thead>
+            <tr>
+              <th class="itmCode">Item Code</th>
+              <th class="itmName">Item Name</th>
+              <th class="prc">Price</th>
+              <th class="disc">Discount</th>
+              <th class="expD">Exp Date</th>
+              <th class="descrp">Description</th>
+              <th class="action">Action</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+        <div class="addForm" id="addFormItem">
+          <div class="addFormDropDown">
+            <select id="addFormDropDownMenu" onclick="fetchItems">
+              <option value="Burgers">Burgers</option>
+              <option value="Submarines">Submarines</option>
+              <option value="Fries">Fries</option>
+              <option value="Pasta">pasta</option>
+              <option value="Chicken">Chicken</option>
+              <option value="Beverages">Beverages</option>
+            </select>
+          </div>
+          <div class="add-item-form">
+            <h2>Add Item</h2>
+
+            <div class="row">
+              <label for="itemCode">Item Code</label>
+              <input type="text" id="itemCode" />
+            </div>
+            <div class="row">
+              <label for="itemName">Item name</label>
+              <input type="text" id="itemName" />
+            </div>
+            <div class="row">
+              <label for="itmDescription" id="lblPrice">Description </label>
+              <input type="text" id="itmDescription" />
+            </div>
+            <div class="row">
+              <label for="itmPrice" id="lblPrice">Price </label>
+              <input type="text" id="itmPrice" />
+            </div>
+            <div class="row">
+              <label for="itmDiscount">Discount </label>
+              <input type="text" id="itmDiscount" />
+            </div>
+            <div class="row">
+              <label for="itmExpDate">Exp Date </label>
+              <input type="date" id="itmExpDate" />
+            </div>
+            <div class="row">
+              <label for="itmImg">Price</label>
+              <input type="file" id="itmImg" />
+            </div>
+            <div class="row">
+              <button onclick="addItem()">Add</button>
+              <button onclick="closeAddItemForm()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="main.js"></script>
+  </body>
+</html>
