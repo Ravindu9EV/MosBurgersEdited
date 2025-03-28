@@ -299,7 +299,8 @@ let itemsTest = {
     },
   ],
 };
-
+const cart = [];
+let tot;
 function login() {
   let username = document.getElementById("username").value;
   let password = document.getElementById("password").value;
@@ -370,7 +371,7 @@ function fetchItems() {
                 <span id="cardDisc">Discount: ${items[item][obj].discount}%</span>
         `;
         bRow.innerHTML = `
-        <button>Add To Cart</button>
+        <button onclick="addToCart('${item}',${obj})">Add To Cart</button>
 
         `;
         bRow.appendChild(prcD);
@@ -383,6 +384,114 @@ function fetchItems() {
 }
 fetchItems();
 
+// add TO cart
+let totalPrice = 0;
+let discountH = 0;
+function addToCart(item, ind) {
+  console.log(cart);
+
+  if (checkCart(items[item][ind].itemCode) === true) {
+    cart.push(items[item][ind].itemCode);
+    addCartRow(item, ind);
+  } else {
+    const caughtItem = document.querySelector(`.${items[item][ind].itemCode}`);
+    caughtItem.innerText = parseInt(caughtItem.innerText) + 1;
+
+    const crtItmPrc = document.querySelector(
+      `#cartItmPrice${items[item][ind].itemCode}`
+    );
+    crtItmPrc.innerText =
+      parseFloat(crtItmPrc.innerText) * parseInt(caughtItem.innerText);
+    console.log(caughtItem);
+    console.log(
+      document.querySelector(`.${items[item][ind].itemCode}`).innerHTML
+    );
+  }
+  calcTotal(
+    items[item][ind].price,
+    items[item][ind].discount,
+    items[item][ind].itemCode
+  );
+}
+
+// check already in or not
+const checkCart = (code) => {
+  console.log(code);
+
+  for (let i in cart) {
+    if (cart[i] === code) {
+      return false;
+    }
+  }
+  return true;
+};
+
+// Add cart Row
+
+function addCartRow(item, ind) {
+  const row = document.createElement("tr");
+  row.setAttribute("id", ``);
+  let qty = 1;
+  console.log(item, items[item][ind].price, "ppppp");
+
+  row.innerHTML = `
+  <td>${items[item][ind].itemName}</td>
+  <td >
+  <button  onclick=deCreaseQty(${items[item][ind].price},'${items[item][ind].discount}','${items[item][ind].itemCode}')>-</button>
+  
+  <span id="itemQty${items[item][ind].itemCode}" class=${items[item][ind].itemCode}>${qty}</span>
+  <button  id="btnDecre" onclick="inCreaseQty(${items[item][ind].price},'${items[item][ind].discount}','${items[item][ind].itemCode}')">+</button>
+  </td>
+  <td id="cartItmPrice${items[item][ind].itemCode}">${items[item][ind].price}</td>
+  
+  `;
+
+  document.querySelector(".cart tbody").appendChild(row);
+}
+// increase added Qty of a food item
+
+function inCreaseQty(prc, disc, code) {
+  const qtyV = document.getElementById(`itemQty${code}`);
+
+  qtyV.innerText = parseInt(qtyV.innerText.toString()) + 1;
+  changePrice(qtyV, prc, code);
+  console.log(qtyV.innerText);
+  incrmntDiscount(prc, disc, code);
+}
+function deCreaseQty(prc, disc, code) {
+  const qty = document.getElementById(`itemQty${code}`);
+  // const prc = document.getElementById("cartItmPrice");
+  if (parseInt(qty.innerText.toString()) > 1) {
+    qty.innerText = parseInt(qty.innerText.toString()) - 1;
+    changePrice(qty, prc, code);
+    changeDiscount(prc, disc, code);
+  }
+}
+
+function changePrice(qty, prc, code) {
+  const p = document.querySelector(`#cartItmPrice${code}`);
+  p.innerText = parseFloat(
+    (prc * parseInt(qty.innerText.toString())).toFixed(2)
+  );
+  //return parseFloat(p.innerText);
+}
+
+function changeDiscount(prc, disc, code) {
+  let d = prc * (disc / 100).toFixed(2);
+  console.log(d, "dissc");
+
+  const disCnt = document.querySelector(`#cartIDisc${code}`);
+  disCnt.innerText = parseFloat(disCnt.innerText) - d;
+}
+
+function incrmntDiscount(prc, disc, code) {
+  let d = prc * (disc / 100).toFixed(2);
+  console.log(d, "dissc");
+
+  const disCnt = document.querySelector(`#cartIDisc${code}`);
+  disCnt.innerText = parseFloat(disCnt.innerText) + d;
+}
+
 function fetchTableI() {
   const tableBody = document.querySelector(".itemsTable tbody");
   tableBody.innerHTML = "";
@@ -390,7 +499,7 @@ function fetchTableI() {
   for (let item in items) {
     for (let obj in items[item]) {
       const row = document.createElement("tr");
-
+      tot += items[item][obj].price;
       row.innerHTML = `
           <td class="itmCode">${items[item][obj].itemCode}</td>
           <td class="itmName">${items[item][obj].itemName}</td>
@@ -404,6 +513,7 @@ function fetchTableI() {
               </td>
       `;
       tableBody.appendChild(row);
+
       console.log(item, obj, "ko");
     }
   }
@@ -473,4 +583,20 @@ function editItem(itm, obj) {
 
 function closeAddItemForm() {
   document.querySelector(".addForm").style.display = "none";
+}
+
+function calcTotal(tot, disc, code) {
+  tot = parseFloat(tot);
+  disc = parseFloat(disc / 100);
+  totalPrice += tot;
+  discountH += parseFloat((tot * disc).toFixed(2));
+  console.log("totaaal", totalPrice, discountH);
+
+  const totP = document.querySelector(".totV");
+  totP.innerHTML = `
+  <span>Tot Rs. <span id="totV">${totalPrice}</span></span>`;
+
+  const disCnt = document.querySelector(".discV");
+  disCnt.innerHTML = `
+  <span id="discV">Discount Rs. <span id="cartIDisc${code}">${discountH}</span></span>`;
 }

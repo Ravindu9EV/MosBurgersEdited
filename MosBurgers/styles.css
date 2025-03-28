@@ -110,7 +110,7 @@ body{
     margin-top: 4rem;
     display: flex;
     flex-direction: row;
-    margin-left: -14rem;
+    margin-left: -10rem;
 }
 
 .items{
@@ -176,9 +176,48 @@ body{
 /* cart */
 
 .midCont .cart{
-    width:15rem;
+    width:20rem;
     height: 30rem;
     background-color: antiquewhite;
+   
+}
+.midCont .cart .cartTable{
+    height: 18rem;
+    background-color: aqua;
+    overflow: scroll;
+}
+.midCont .cart table{
+   
+    background-color: aquamarine;
+}
+.midCont .cart table thead{
+    background-color: burlywood;
+}
+.midCont .cart table tbody{
+    background-color: #9a5f5f;
+    
+}
+.midCont .cart table tbody td{
+    padding: 2px 6px;
+    
+}
+.midCont .cart .cartTable thead th:first-child,.midCont .cart table tbody td:first-child{
+    width: 6rem;
+    
+}
+.midCont .cart table tbody td:nth-child(2){
+    padding-left: 16px;
+}
+
+.midCont .cart table tbody td:nth-child(3){
+    padding-left: 42px;
+
+}
+.midCont .cart .cartTable thead th:nth-child(2),.midCont .cart table tbody td:nth-child(2){
+    width: 3rem;
+}
+.midCont .cart .cartTable thead th:nth-child(3),.midCont .cart table tbody td:nth-child(3){
+    width: 5rem;
 }
 /* menu */
 section{
@@ -228,7 +267,27 @@ section{
     margin-top: 1rem;
     margin-left: 40rem;
 }
-
+/* total price display */
+.totP{
+    height: 4rem;
+    background-color: rgb(227, 175, 107);
+}
+.totP span{
+    display: flex;
+    margin-left: 1rem;
+}
+.totP #totV{
+    font-size: 1.2em;
+    color: rgb(58, 26, 14);
+}
+.totP #discV{
+    color: #9a5f5f;
+}
+/* customer details */
+.customerDet{
+    height: 8rem;
+    background-color: cadetblue;
+}
 /* add Item form */
 
 .addFormDropDown{
